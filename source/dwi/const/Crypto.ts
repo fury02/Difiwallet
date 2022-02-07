@@ -1,0 +1,1 @@
+export const SECURE_STORAGE = 'SECURE_STORAGE';

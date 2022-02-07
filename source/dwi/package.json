@@ -1,0 +1,78 @@
+{
+  "name": "Difiwallet",
+  "version": "0.1.04",
+  "private": true,
+  "scripts": {
+    "clean": "watchman watch-del-all && npm cache clean --force && rm -rf /tmp/metro-cache && cd android && ./gradlew clean",
+    "reinstall": "rm -rf node_modules && npm install",
+    "clean-reinstall": "npm run reinstall && npm run clean",
+    "nodejs-reinstall": "cd nodejs-assets/nodejs-project && rm -rf node_modules && npm install",
+    "nodejs-build": "cd nodejs-assets/nodejs-project && rimraf ./build && tsc",
+    "nodejs-copy": "cp -r /home/fury/FullProjects/ReactNativeAndroid/dwi/dwi/nodejs-assets/nodejs-project/build/* /home/fury/FullProjects/ReactNativeAndroid/dwi/dwi/nodejs-assets/nodejs-project",
+    "nodejs-start": "npm run nodejs-build && node build/HandlerMobileclean.js",
+    "start-reset-clean": "cd android && ./gradlew clean && cd .. && npx react-native start --reset-cache",
+    "start": "npx react-native start --reset-cache",
+    "debug": "cd android && ./gradlew clean && export ANDROID_NDK_HOME=$HOME/Android/Sdk/ndk/21.4.7075529 && export ANDROID_HOME=$HOME/Android/Sdk && export PATH=$PATH:$ANDROID_HOME/emulator && export PATH=$PATH:$ANDROID_HOME/tools && export PATH=$PATH:$ANDROID_HOME/tools/bin && export PATH=$PATH:$ANDROID_HOME/platform-tools && ./gradlew assembleDebug --stacktrace",
+    "android": "export ANDROID_HOME=$HOME/Android/Sdk && export PATH=$PATH:$ANDROID_HOME/emulator && export PATH=$PATH:$ANDROID_HOME/tools && export PATH=$PATH:$ANDROID_HOME/tools/bin && export PATH=$PATH:$ANDROID_HOME/platform-tools && export ANDROID_NDK_HOME=$HOME/Android/Sdk/ndk/21.4.7075529 && npx react-native run-android",
+    "android-release": "export ANDROID_HOME=$HOME/Android/Sdk && export PATH=$PATH:$ANDROID_HOME/emulator && export PATH=$PATH:$ANDROID_HOME/tools && export PATH=$PATH:$ANDROID_HOME/tools/bin && export PATH=$PATH:$ANDROID_HOME/platform-tools && export ANDROID_NDK_HOME=$HOME/Android/Sdk/ndk/21.4.7075529 && npx react-native run-android --variant=release",
+    "apk-aab": "cd android && ./gradlew clean && export ANDROID_HOME=$HOME/Android/Sdk && export PATH=$PATH:$ANDROID_HOME/emulator && export PATH=$PATH:$ANDROID_HOME/tools && export PATH=$PATH:$ANDROID_HOME/tools/bin && export PATH=$PATH:$ANDROID_HOME/platform-tools && export ANDROID_NDK_HOME=$HOME/Android/Sdk/ndk/21.4.7075529 && ./gradlew bundleRelease && ./gradlew assembleRelease",
+    "apk": "cd android && ./gradlew clean && export ANDROID_HOME=$HOME/Android/Sdk && export PATH=$PATH:$ANDROID_HOME/emulator && export PATH=$PATH:$ANDROID_HOME/tools && export PATH=$PATH:$ANDROID_HOME/tools/bin && export PATH=$PATH:$ANDROID_HOME/platform-tools && export ANDROID_NDK_HOME=$HOME/Android/Sdk/ndk/21.4.7075529 &&  ./gradlew assembleRelease",
+    "aab": "cd android && ./gradlew clean && export ANDROID_HOME=$HOME/Android/Sdk && export PATH=$PATH:$ANDROID_HOME/emulator && export PATH=$PATH:$ANDROID_HOME/tools && export PATH=$PATH:$ANDROID_HOME/tools/bin && export PATH=$PATH:$ANDROID_HOME/platform-tools && export ANDROID_NDK_HOME=$HOME/Android/Sdk/ndk/21.4.7075529 && ./gradlew bundleRelease",
+    "ios": "react-native run-ios",
+    "test": "jest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+  },
+  "dependencies": {
+    "@react-navigation/bottom-tabs": "^6.0.9",
+    "@react-navigation/material-bottom-tabs": "^6.0.9",
+    "@react-navigation/native": "^6.0.6",
+    "@react-navigation/native-stack": "^6.2.5",
+    "@react-navigation/stack": "^6.0.11",
+    "@react-navigation/drawer": "^6.1.8",
+    "@react-native-clipboard/clipboard": "^1.8.5",
+    "react-native-gesture-handler": "^2.1.1",
+    "react-native-reanimated": "2.2.4",
+    "cross-fetch": "^3.1.4",
+    "nodejs-mobile-react-native": "0.6.3",
+    "react": "17.0.2",
+    "react-native": "0.66.4",
+    "react-native-encrypted-storage": "^4.0.2",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-screens": "^3.10.1",
+    "react-native-vector-icons": "^9.0.0",
+    "react-native-table-component": "^1.2.1",
+    "react-native-svg" : "^12.1.1",
+    "react-native-qrcode-svg": "^6.1.2",
+    "native-base": "^3.2.2",
+    "big-integer": "^1.6.51"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/runtime": "^7.12.5",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@types/jest": "^26.0.23",
+    "@types/react-native": "^0.66.4",
+    "@types/react-test-renderer": "^17.0.1",
+    "babel-jest": "^26.6.3",
+    "eslint": "^7.14.0",
+    "jest": "^26.6.3",
+    "metro-react-native-babel-preset": "^0.66.2",
+    "react-test-renderer": "17.0.2",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.5.4"
+  },
+  "resolutions": {
+    "@types/react": "^17"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  }
+}
